@@ -11,22 +11,10 @@ class App extends Component {
       orders: []
     }
   }
-// const App = () => {
-//   const [orders, setOrders] = useState([])
 
-//   const getData = () => {
-//     getOrders()
-//       .then(data => setOrders(data))
-//       .catch(err => console.error('Error fetching:', err));
-//   }
-
-  // useEffect(() => {
-  //   getData()
-  //   console.log('DATA', orders)
-  // }, [])
   componentDidMount() {
       getOrders()
-      // .then(data => this.setState({ orders: data}))
+      .then(data => this.setState({ orders: data }))
       .catch(err => console.error('Error fetching:', err));
   }
 
@@ -37,7 +25,8 @@ class App extends Component {
           <h1>Burrito Builder</h1>
           <OrderForm />
         </header>
-        <Orders orders={this.state.orders} />
+        {!this.state.orders.length && <p>No orders yet!</p>}
+        {this.state.orders.length && <Orders orders={this.state} />}
       </main>
     );
   }
