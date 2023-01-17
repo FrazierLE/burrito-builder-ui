@@ -29,9 +29,7 @@ class OrderForm extends Component {
       name: this.state.name,
       ingredients: this.state.ingredients
     }
-    if(this.state.name && this.state.ingredients.length) {
-      this.props.addNewOrder(newOrder)
-    }
+    this.props.addNewOrder(newOrder)
     this.clearInputs();
   }
 
