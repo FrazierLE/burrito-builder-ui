@@ -43,6 +43,3 @@ class App extends Component {
 
 
 export default App;
-
-
-// {id: 2, name: "Alex", ingredients: ["cheese", "beans"]}

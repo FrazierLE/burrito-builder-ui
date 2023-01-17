@@ -20,6 +20,7 @@ describe('Homepage spec', () => {
   });
   it('Should show if nothing is selected', () => {
     cy.get('p').should('have.text', 'Order: Nothing selected')
+    cy.get('h5').should('have.text', 'Please add a name to the order and select desired ingredients')
   });
   it('Should be able to see the form', () => {
     cy.get('input').should('have.text', '')
@@ -35,7 +36,6 @@ describe('Homepage spec', () => {
     cy.get('[name="jalapenos"]').should('have.text', 'jalapenos')
     cy.get('[name="cilantro"]').should('have.text', 'cilantro')
     cy.get('[name="sour cream"]').should('have.text', 'sour cream')
-    cy.get(':nth-child(15)').should('have.text', 'Submit Order')
   })
   it('Should show to input field value', () => {
     cy.get('input[placeholder="Name"]').should('have.text', '').type('Lauren').should('have.value', 'Lauren')
@@ -48,9 +48,17 @@ describe('Homepage spec', () => {
     cy.get('[name="jalapenos"]').should('have.text', 'jalapenos').click()
     cy.get('p').should('have.text', 'Order: carnitas, queso fresco, jalapenos')
     cy.get(':nth-child(15)').should('have.text', 'Submit Order').click()
+    cy.get('section > :nth-child(1)').should('contain', 'Pat')
+    .and('contain', 1)
+    .and('contain', "beans",
+    "lettuce",
+    "carnitas",
+    "queso fresco",
+    "jalapeno")
     cy.get('section > :nth-child(2)').should('contain', 'Lauren')
     .and('contain', 2)
     .and('contain', "carnitas","queso fresco","jalapeno")
     cy.get('p').should('have.text', 'Order: Nothing selected')
+    cy.get('h5').should('have.text', 'Please add a name to the order and select desired ingredients')
   })
 })
