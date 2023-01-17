@@ -2,7 +2,9 @@ import React from 'react';
 import './Orders.css';
 
 const Orders = props => {
+  console.log('PROPS', props.orders)
   const orderEls = props.orders.map(order => {
+    console.log('ORDER', order)
     return (
       <div className="order">
         <h3>{order.name}</h3>
